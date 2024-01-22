@@ -34,11 +34,14 @@ DB_PASSWORD=
 php artisan migrate:refresh --seed
 ```
 
+# Link the storage to the public directory 
+```bash
+php artisan storage:link
+```
+
 # Run the app 
 ```bash
 php artisan serve
 ```
-
-
 
 
