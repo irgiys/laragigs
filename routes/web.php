@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\GetImageController;
+
 use App\Models\User;
 
 /*
@@ -54,3 +56,6 @@ Route::get('/login', [UserController::class, "login"])->name('login')->middlewar
 
 // Log in user
 Route::post("/users/authenticate", [UserController::class, "authenticate"]);
+
+// Showing image logos from listing 
+Route::get("/storage/logos/{fileName}", [GetImageController::class, "displayImage"])->name('image.displayImage');

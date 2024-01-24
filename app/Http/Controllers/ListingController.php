@@ -41,7 +41,10 @@ class ListingController extends Controller
         ]);
 
         if ($request->hasFile("logo")) {
-            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+            // $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+            $img = $request->file('logo')->store('logos', 'public');
+            $imgSplit = explode("/", $img);
+            $formFields['logo'] = $imgSplit[1];
         }
 
         $formFields["user_id"] = auth()->id();
@@ -73,7 +76,10 @@ class ListingController extends Controller
             'description' => 'required',
         ]);
         if ($request->hasFile("logo")) {
-            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+            // $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+            $img = $request->file('logo')->store('logos', 'public');
+            $imgSplit = explode("/", $img);
+            $formFields['logo'] = $imgSplit[1];
         }
         $listing->update($formFields);
         return back()->with('message', 'Listing Updated');
